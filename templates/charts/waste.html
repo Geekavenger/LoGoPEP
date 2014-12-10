@@ -1,0 +1,128 @@
+{% extends 'charts/chart_base.html' %}
+
+
+{% block extraHead %}
+
+    {{ block.super }}
+
+    <script type='text/javascript' src='/static/js/waste_chart/waste_chart.js'></script>
+
+    <script type="text/javascript">
+
+        $(document).ready(function() {
+
+            var allCities = $('#allCities');
+            var centralBox = $('.centralBox');
+            var centralCities = $('#centralCities');
+
+            $('#tons').attr('checked', true);
+            $('#totalWaste').attr('checked', true);
+            allCities.attr('checked', true);
+            $('#2008').attr('checked', true);
+            $('#noNormalize').attr('checked', true);
+
+            var chartTitle = 'Total Municipal Solid Waste';
+            $('#chartTitle').html(chartTitle);
+
+            setTimeout("findAllSelectedBoxes('waste')", 50);
+
+            $('.city').click(function(){
+
+                if (this.checked == false) {
+
+                    allCities.attr('checked', false);
+
+                }
+
+            });
+
+            $(centralBox).click(function(){
+
+                if (this.checked == false) {
+
+                    centralCities.attr('checked', false);
+
+                }
+
+            });
+
+            $('.innerBox').click(function(){
+
+                if (this.checked == false) {
+
+                    $('#innerSuburbs').attr('checked', false);
+
+                }
+
+            });
+
+            $('.outerBox').click(function(){
+
+                if (this.checked == false) {
+
+                    $('#outerSuburbs').attr('checked', false);
+
+                }
+
+            });
+
+        });
+
+        google.load("visualization", "1", {packages:["corechart"]});
+
+    </script>
+
+{% endblock %}
+
+
+{% block chart-units %}
+
+    <ul id='chart-units'>
+
+        <li>
+            <input id='tons' type='radio' name='unit' value='unit_tons'>
+            <label for='tons'>Tons</label>
+        </li>
+
+        <li>
+            <input id='co' type='radio' name='unit' value='unit_co'>
+            <label for='co'>CO<sub>2</sub>e</label>
+        </li>
+
+        <li>
+            <input id='dollars' type='radio' name='unit' value='unit_dollars'>
+            <label for='dollars'>$</label>
+        </li>
+
+    </ul>
+
+{% endblock %}
+
+
+{% block chartIndicators %}
+
+    <form>
+
+        <input type='hidden' name='chartType' value='waste'>
+
+        <ul id='chartIndicators'>
+
+            <li>
+                <input id='totalWaste' type='radio' name='indicator' value='ind_Total Municipal Solid Waste' onclick="setChartTitle(this)">
+                <label for='totalWaste'>TOTAL MUNICIPAL SOLID WASTE</label>
+            </li>
+
+            <li>
+                <input id='totalWaste_method' type='radio' name='indicator' value='ind_Total Municipal Solid Waste by Management Method' onclick="setChartTitle(this)">
+                <label for='totalWaste_method'>
+                    TOTAL MUNICIPAL SOLID WASTE BY MANAGEMENT METHOD
+                    <br>
+                    <span style='margin-left: 15px'>(RECYCLED, LANDFILLED, INCINERATED)</span>
+                </label>
+            </li>
+
+        </ul>
+
+    </form>
+
+{% endblock %}

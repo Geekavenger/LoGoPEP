@@ -1,0 +1,250 @@
+{% extends 'base.html' %}
+
+
+{% block title %}Home{% endblock %}
+
+
+{% block extraHead %}
+
+    <link type="text/css" rel="stylesheet" href="/static/css/home.css?v=2"/>
+
+    <script type='text/javascript'>
+
+        $(document).ready(function () {
+            $.ajaxSetup({
+                beforeSend: function (xhr, settings) {
+                    function getCookie(name) {
+                        var cookieValue = null;
+                        if (document.cookie && document.cookie != '') {
+                            var cookies = document.cookie.split(';');
+                            for (var i = 0; i < cookies.length; i++) {
+                                var cookie = jQuery.trim(cookies[i]);
+                                // Does this cookie string begin with the name we want?
+                                if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                                    break;
+                                }
+                            }
+                        }
+                        return cookieValue;
+                    }
+
+                    if (!(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url))) {
+                        // Only send the token to relative URLs i.e. locally.
+                        xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
+                    }
+                }
+            });
+
+        });
+
+        var lastSection;
+
+        function bubble_select(section) {
+            var postData = "sect=" + section;
+            var d = new Date();
+            var n = d.getTime();
+            var params = {
+                type: 'POST',
+                data: postData,
+                url: "/home_api/select_section?n=" + n
+            };
+            lastSection = section;
+
+            $.ajax(params)
+                    .success(bubble_select_sucess);
+
+            return true;
+        }
+
+        function bubble_select_sucess(data) {
+            var sect = data['sect'];
+
+            if (sect != lastSection) {
+                return;
+            }
+
+            var billboardUrl = data['billboardUrl'];
+            var graphUrl = data['graphUrl'];
+            var texthtml = data['textHtml'];
+
+            $('#billboardWrapper').css("background", "url('" + billboardUrl + "') center no-repeat");
+            $('#graphSectionWrapper').css("background", "url('" + graphUrl + "') center no-repeat");
+            $('#graphCopy').html(texthtml);
+            $('.bubbleImage').removeClass('active');
+
+            var energyBubble = $('#energybubble');
+            var waterBubble = $('#waterbubble');
+            var travelBubble = $('#travelbubble');
+            var wasteBubble = $('#wastebubble');
+            var carbonBubble = $('#carbonbubble');
+
+            {# REMOVE ANY OTHER ACTIVE CLASSES #}
+            $(energyBubble).removeClass('active');
+            $(energyBubble).addClass('inActive');
+
+            $(waterBubble).removeClass('active');
+            $(waterBubble).addClass('inActive');
+
+            $(travelBubble).removeClass('active');
+            $(travelBubble).addClass('inActive');
+
+            $(wasteBubble).removeClass('active');
+            $(wasteBubble).addClass('inActive');
+
+            $(carbonBubble).removeClass('active');
+            $(carbonBubble).addClass('inActive');
+
+            switch (sect) {
+                case 'ENERGY':
+
+                    $(energyBubble).removeClass('inActive');
+                    $(energyBubble).addClass('active');
+
+                    break;
+
+                case 'WATER':
+
+                    $(waterBubble).removeClass('inActive');
+                    $(waterBubble).addClass('active');
+
+                    break;
+
+                case 'TRAVEL':
+
+                    $(travelBubble).removeClass('inActive');
+                    $(travelBubble).addClass('active');
+
+                    break;
+
+                case 'WASTE':
+
+                    $(wasteBubble).removeClass('inActive');
+                    $(wasteBubble).addClass('active');
+
+                    break;
+
+                case 'CARBON':
+
+                    $(carbonBubble).removeClass('inActive');
+                    $(carbonBubble).addClass('active');
+
+                    break;
+            }
+
+        }
+
+    </script>
+
+{% endblock %}
+
+{% block bodyid %}home{% endblock %}
+
+{% block content %}
+
+    <div id='billboardWrapper' style="background: url('{{ current_sect.billboard_image }}') center no-repeat;">
+
+        {##### NO CONTENT HERE #####}
+
+    </div>
+
+    <div id='inPageLinksWrapper'>
+
+        <div id='inPageLinks'>
+
+            <div class='bubbleWrapper  '>
+
+                <a href='#' onclick="bubble_select('ENERGY');">
+                    <div id='energybubble' class='bubbleImage'>
+                    </div>
+                </a>
+
+                <div style='clear: both'></div>
+
+                <h2 class='linkTitle'>Energy</h2>
+
+                <div class='linkTitleDetail'>british thermal units</div>
+
+            </div>
+
+            <div class='bubbleWrapper  '>
+
+                <a href='#' onclick="bubble_select('WATER');">
+                    <div id='waterbubble' class='bubbleImage'></div>
+                </a>
+
+                <div style='clear: both'></div>
+
+                <h2 class='linkTitle'>Water</h2>
+
+                <div class='linkTitleDetail'>Gallons</div>
+
+            </div>
+
+            <div class='bubbleWrapper  '>
+
+                <a href='#' onclick="bubble_select('TRAVEL');">
+                    <div id='travelbubble' class='bubbleImage'></div>
+                </a>
+
+                <div style='clear: both'></div>
+
+                <h2 class='linkTitle'>Travel</h2>
+
+                <div class='linkTitleDetail'>vehicle miles</div>
+
+            </div>
+
+            <div class='bubbleWrapper  '>
+
+                <a href='#' onclick="bubble_select('WASTE');">
+                    <div id='wastebubble' class='bubbleImage'></div>
+                </a>
+
+                <div style='clear: both'></div>
+
+                <h2 class='linkTitle'>Waste</h2>
+
+                <div class='linkTitleDetail'>pounds</div>
+
+            </div>
+
+            <div class='bubbleWrapper lastBubbleWrapper '>
+
+                <a href='#' onclick="bubble_select('CARBON');">
+                    <div id='carbonbubble' class='bubbleImage'></div>
+                </a>
+
+                <div style='clear: both'></div>
+
+                <h2 class='linkTitle'>GHG Emissions</h2>
+
+                <div class='linkTitleDetail'>Carbon Dioxide Equivalents</div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div id='content'>
+
+        <div id='graphSectionWrapper' style='background: url({{ current_sect.graph_image }}) top center no-repeat'>
+
+            <div id='graphCopy'>
+
+                {% autoescape off %}
+
+                    {{ current_sect.graph_copy }}
+
+                {% endautoescape %}
+
+            </div>
+
+        </div>
+
+        <div style='clear: both'></div>
+
+    </div>
+
+{% endblock %}

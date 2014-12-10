@@ -1,0 +1,140 @@
+{% extends 'charts/chart_base.html' %}
+
+
+{% block extraHead %}
+
+    {{ block.super }}
+
+    <script type='text/javascript' src='/static/js/energy_chart/energy_chart.js'></script>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            var btu = $('#energy-btu');
+            var allCities = $('#allCities');
+            var centralBox = $('.centralBox');
+            var centralCities = $('#centralCities');
+
+            $(btu).attr('checked', true);
+            $('#totalEnergy').attr('checked', true);
+            allCities.attr('checked', true);
+            $('#2008').attr('checked', true);
+            $('#noNormalize').attr('checked', true);
+
+            var chartTitle = 'Total Energy';
+            $('#chartTitle').html(chartTitle);
+
+            setTimeout("findAllSelectedBoxes('energy')", 50);
+
+            $('.city').click(function () {
+
+                if (this.checked == false) {
+
+                    allCities.attr('checked', false);
+
+                }
+
+            });
+
+            $(centralBox).click(function () {
+
+                if (this.checked == false) {
+
+                    centralCities.attr('checked', false);
+
+                }
+
+            });
+
+            $('.innerBox').click(function () {
+
+                if (this.checked == false) {
+
+                    $('#innerSuburbs').attr('checked', false);
+
+                }
+
+            });
+
+            $('.outerBox').click(function () {
+
+                if (this.checked == false) {
+
+                    $('#outerSuburbs').attr('checked', false);
+
+                }
+
+            });
+
+        });
+
+        google.load("visualization", "1", {packages: ["corechart"]});
+
+    </script>
+
+{% endblock %}
+
+
+{% block chart-units %}
+
+    <ul id='chart-units'>
+
+        <li>
+            <input id='energy-btu' type='radio' name='unit' value='unit_btu' onclick='showWeatherNorm()'>
+            <label for='energy-btu'>Btu</label>
+        </li>
+
+        <li>
+            <input id='energy-co2' type='radio' name='unit' value='unit_co' onclick='showWeatherNorm()'>
+            <label for='energy-co2'>CO<sub>2</sub>e</label>
+        </li>
+
+        <li>
+            <input id='energy-dollars' type='radio' name='unit' value='unit_dollars' onclick='showWeatherNorm()'>
+            <label for='energy-dollars'>$</label>
+        </li>
+
+    </ul>
+
+{% endblock %}
+
+
+{% block chartIndicators %}
+
+    <form>
+
+        <input type='hidden' name='chartType' value='energy'>
+
+        <ul id='chartIndicators'>
+
+            <li>
+                <input id='totalEnergy' type='radio' name='indicator' value='ind_Total Energy' onclick="setChartTitle(this)">
+                <label for='totalEnergy'>TOTAL ENERGY</label>
+            </li>
+
+            <li>
+                <input id='totalEnergy_source' type='radio' name='indicator' value='ind_Total Energy by Source' onclick="setChartTitle(this)">
+                <label for='totalEnergy_source'>TOTAL ENERGY (RESIDENTIAL AND COMMERCIAL/INDUSTRIAL)</label>
+            </li>
+
+            <li>
+                <input id='totalEnergy_type' type='radio' name='indicator' value='ind_Total Energy by Type' onclick="setChartTitle(this)">
+                <label for='totalEnergy_type'>TOTAL ENERGY BY TYPE (ELECTRICITY, NATURAL GAS & OTHER)</label>
+            </li>
+
+            <li>
+                <input id='resEnergy' type='radio' name='indicator' value='ind_Residential Energy' onclick="setChartTitle(this)">
+                <label for='resEnergy'>RESIDENTIAL ENERGY</label>
+            </li>
+
+            <li>
+                <input id='comEnergy' type='radio' name='indicator' value='ind_Commercial/Industrial Energy' onclick="setChartTitle(this)">
+                <label for='comEnergy'>COMMERCIAL/INDUSTRIAL ENERGY</label>
+            </li>
+
+        </ul>
+
+    </form>
+
+{% endblock %}

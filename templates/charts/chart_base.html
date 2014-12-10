@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+
+{% block title %}{{ page.title }}{% endblock %}
+
+
+{% block extraHead %}
+
+    <link type="text/css" rel="stylesheet" href="/static/css/chart_detail.css" />
+    <link type="text/css" rel="stylesheet" href="/static/css/chart_base.css" />
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type='text/javascript' src='/static/js/chart.js'></script>
+
+    <style type='text/css'>
+
+        .sectionWrapper .leftCol h1 {
+            color: {{ chartColor }};
+            border-color: {{ chartColor }} !important;
+        }
+
+        .sectionWrapper .leftCol h2 {
+            color: {{ chartColor }};
+        }
+
+    </style>
+
+{% endblock %}
+
+
+{% block content %}
+
+    <div id='content'>
+
+        <div class='sectionWrapper'>
+
+            <div class='leftCol'>
+
+                <h1>{{ page.chart_title }}</h1>
+
+                <div class='units-wrapper'>
+
+                    {% block chart-units %}
+
+
+                    {% endblock %}
+
+                </div>
+
+                <div style='clear: both'></div>
+
+                {% autoescape off %}
+                    {{ page.content }}
+                {% endautoescape %}
+
+            </div>
+
+            <div class='rightCol'>
+
+                {% block chartIndicators %}
+
+
+                {% endblock %}
+
+            </div>
+
+        </div>
+
+        <div id='chartWrapper'>
+
+            <div id="chart_div" style='width: 920px; min-height: 530px'></div>
+
+            <div id='yearMessage' style='color: #ab2b2b'></div>
+            <div id='averageMessage' style='color: #ab2b2b'></div>
+            <div id='chartTitle' style='color: {{ chartColor }}'></div>
+            <div id='chartSubTitle' style='color: {{ chartColor }}'></div>
+
+            {% include 'charts/triggers_snippet.html' %}
+
+        </div>
+
+        <div style='clear: both'></div>
+
+    </div>
+
+{% endblock %}

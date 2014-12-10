@@ -1,0 +1,169 @@
+/******************** UNIVERSAL TAGS ********************/
+h1 {
+    color: #323232;
+    font-size: 22px;
+    font-weight: normal;
+}
+
+h2 {
+    color: #20657b;
+    font-size: 15px;
+}
+
+
+/******************** BILLBOARD ********************/
+#billboardWrapper {
+    float: left;
+    width: 100%;
+    height: 380px;
+}
+
+#billboardWrapper img {
+    margin: 0 auto;
+}
+
+
+/******************** IN PAGE LINKS ********************/
+#inPageLinksWrapper {
+    float: left;
+    width: 100%;
+    /*height: 380px;*/
+    margin: -60px 0 30px 0;
+}
+
+#inPageLinks {
+    width: 960px;
+    margin: 0 auto;
+}
+
+#inPageLinks .linkTitle {
+    color: #4C4C4C;
+    text-transform: uppercase;
+    font-size: 26px;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+#inPageLinks .linkTitleDetail {
+    color: #4C4C4C;
+    text-transform: uppercase;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+#inPageLinks .linkTeaser {
+    width: 160px;
+    font-size: 13px;
+    line-height: 1.4em;
+    padding: 0 10px;
+}
+
+
+/********** BUBBLES **********/
+#inPageLinks .bubbleWrapper {
+    float: left;
+    width: 185px;
+    min-height: 195px;
+    text-align: center;
+    margin-right: 5px;
+}
+
+#inPageLinks .lastBubbleWrapper {
+    margin-right: 0;
+}
+
+#inPageLinks .bubbleWrapper .bubble {
+    float: left;
+    width: 185px;
+    height: 195px;
+    margin-bottom: 5px;
+}
+
+
+/******************** GRAPH SECTION ********************/
+#graphSectionWrapper {
+    float: left;
+    width: 970px;
+    height: 702px;
+    padding: 0 0 80px 80px;
+}
+
+#graphSectionWrapper #graphCopy {
+    float: left;
+    width: 505px;
+    margin-top: 315px;
+}
+
+#graphCopy h2 {
+    font-size: 24px;
+    color: #4C4C4C;
+    font-weight: normal;
+    margin-bottom: 10px;
+}
+
+#graphCopy p {
+    font-size: 16px;
+    text-align: justify;
+    margin-bottom: 10px;
+    line-height: 1.4em;
+}
+
+
+.subHeading{
+    color: #323232;
+    font-size: 22px;
+    font-weight: normal;
+    margin:0 0 15px 0;
+}
+
+.bubbleImage{
+    width:185px;
+    height: 204px;
+    cursor: hand;
+}
+
+#energybubble, #energybubble.active, #energybubble.active:hover, #energybubble.inActive:hover {
+    background: url('/static/images/nav_bubbles/energy.png') no-repeat;
+}
+
+#energybubble:hover, #energybubble.inActive{
+    background: url('/static/images/nav_bubbles/energy_selected.png') no-repeat;
+}
+
+
+#waterbubble, #waterbubble.active, #waterbubble.active:hover, #waterbubble.inActive:hover{
+    background: url('/static/images/nav_bubbles/water.png') no-repeat;
+}
+
+#waterbubble:hover, #waterbubble.inActive{
+    background: url('/static/images/nav_bubbles/water_selected.png') no-repeat;
+}
+
+
+#travelbubble, #travelbubble.active, #travelbubble.active:hover, #travelbubble.inActive:hover{
+    background: url('/static/images/nav_bubbles/travel.png') no-repeat;
+}
+
+#travelbubble:hover, #travelbubble.inActive{
+    background: url('/static/images/nav_bubbles/travel_selected.png') no-repeat;
+}
+
+#wastebubble, #wastebubble.active, #wastebubble.active:hover, #wastebubble.inActive:hover{
+    background: url('/static/images/nav_bubbles/waste.png') no-repeat;
+}
+
+#wastebubble:hover, #wastebubble.inActive{
+    background: url('/static/images/nav_bubbles/waste_selected.png') no-repeat;
+}
+
+#carbonbubble, #carbonbubble.active, #carbonbubble.active:hover, #carbonbubble.inActive:hover {
+    background: url('/static/images/nav_bubbles/carbon.png') no-repeat;
+}
+
+#carbonbubble:hover, #carbonbubble.inActive{
+    background: url('/static/images/nav_bubbles/carbon_selected.png') no-repeat;
+}
+
+#home #footerWrapper {
+    margin-top: -180px;
+}

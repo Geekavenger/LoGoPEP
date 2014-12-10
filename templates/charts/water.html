@@ -1,0 +1,133 @@
+{% extends 'charts/chart_base.html' %}
+
+
+{% block extraHead %}
+
+    {{ block.super }}
+
+    <script type='text/javascript' src='/static/js/water_chart/water_chart.js'></script>
+
+    <script type="text/javascript">
+
+        $(document).ready(function() {
+
+            var allCities = $('#allCities');
+            var centralBox = $('.centralBox');
+            var centralCities = $('#centralCities');
+
+            $('#gallons').attr('checked', true);
+            $('#totalWater').attr('checked', true);
+            allCities.attr('checked', true);
+            $('#2008').attr('checked', true);
+            $('#noNormalize').attr('checked', true);
+
+            var chartTitle = 'Total Water';
+            $('#chartTitle').html(chartTitle);
+
+            setTimeout("findAllSelectedBoxes('water')", 50);
+
+            $('.city').click(function(){
+
+                if (this.checked == false) {
+
+                    allCities.attr('checked', false);
+
+                }
+
+            });
+
+            $(centralBox).click(function(){
+
+                if (this.checked == false) {
+
+                    centralCities.attr('checked', false);
+
+                }
+
+            });
+
+            $('.innerBox').click(function(){
+
+                if (this.checked == false) {
+
+                    $('#innerSuburbs').attr('checked', false);
+
+                }
+
+            });
+
+            $('.outerBox').click(function(){
+
+                if (this.checked == false) {
+
+                    $('#outerSuburbs').attr('checked', false);
+
+                }
+
+            });
+
+        });
+
+        google.load("visualization", "1", {packages:["corechart"]});
+
+    </script>
+
+{% endblock %}
+
+
+{% block chart-units %}
+
+    <ul id='chart-units'>
+
+        <li>
+            <input id='gallons' type='radio' name='unit' value='unit_gallons' onclick='showWeatherNorm()'>
+            <label for='gallons'>Gallons</label>
+        </li>
+
+        <li>
+            <input id='dollars' type='radio' name='unit' value='unit_dollars' onclick='hideWeatherNorm()'>
+            <label for='dollars'>$</label>
+        </li>
+
+    </ul>
+
+{% endblock %}
+
+
+{% block chartIndicators %}
+
+    <form>
+
+        <input type='hidden' name='chartType' value='water'>
+
+        <ul id='chartIndicators'>
+
+            <li>
+                <input id='totalWater' type='radio' name='indicator' value='ind_Total Water' onclick="setChartTitle(this)">
+                <label for='totalWater'>TOTAL WATER</label>
+            </li>
+
+            <li>
+                <input id='totalWater_source' type='radio' name='indicator' value='ind_Total Water by End Use Type' onclick="setChartTitle(this)">
+                <label for='totalWater_source'>
+                    TOTAL WATER BY END USE TYPE
+                    <br>
+                    <span style='margin-left: 15px'>(RESIDENTIAL AND COMMERCIAL/INDUSTRIAL)</span>
+                </label>
+            </li>
+
+            <li>
+                <input id='resWater' type='radio' name='indicator' value='ind_Residential Water' onclick="setChartTitle(this)">
+                <label for='resWater'>RESIDENTIAL WATER</label>
+            </li>
+
+            <li>
+                <input id='comWater' type='radio' name='indicator' value='ind_Commercial/Industrial Water' onclick="setChartTitle(this)">
+                <label for='comWater'>COMMERCIAL/INDUSTRIAL WATER</label>
+            </li>
+
+        </ul>
+
+    </form>
+
+{% endblock %}

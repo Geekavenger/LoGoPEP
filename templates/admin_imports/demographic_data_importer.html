@@ -1,0 +1,123 @@
+{% extends 'admin/base_site.html' %}
+{% load i18n %}
+{% block title %}Importer | LHB{% endblock %}
+
+
+{% block extrastyle %}
+
+    {{ block.super }}
+
+{% endblock %}
+
+
+{% block extrahead %}
+
+    {{ form.media }}
+
+    <style type='text/css'>
+
+        .breadcrumb.margin {
+            margin-bottom: 40px;
+        }
+
+        #content-main h2 {
+            margin: 0;
+        }
+
+        #content-main h3 {
+            padding: 0;
+        }
+
+        #content-main ul.instructions {
+            margin: 0 0 20px 15px;
+        }
+
+        #form-wrapper {
+            float: left;
+            width: 100%;
+            margin-top: 30px;
+            padding-top: 10px;
+            border-top: 1px solid #555555;
+        }
+
+        #errorMessage {
+            float: left;
+            width: 100%;
+            color: #FF0000;
+            margin-bottom: 20px;
+        }
+
+        #content-main form,
+        #content-main .module {
+            margin: 0;
+        }
+
+        #content-main input[type='file'] {
+            font-size: 12px;
+            line-height: 16px;
+        }
+
+    </style>
+
+{% endblock %}
+
+
+{% block breadcrumbs %}
+
+    <ul class='breadcrumb margin'>
+        <li>Demographic Data Importer</li>
+    </ul>
+
+{% endblock %}
+
+
+{% block content %}
+
+    <div id='content-main'>
+
+        <h2>Instructions</h2>
+        <ul class='instructions'>
+            <li>Create a list of item to import that has the columns specified in the format below.</li>
+            <li>Save the list as a csv (comma seperated values) file.</li>
+            <li>Choose Browse below and select the file from your computer</li>
+            <li>Click 'Import File' below.</li>
+        </ul>
+
+        <h3>Format</h3>
+        <p>
+            City, Year, Population, Jobs, Households
+        </p>
+
+        <div id='form-wrapper'>
+
+            {% if errorMessage %}
+                <div id='errorMessage'>
+
+                    {{ errorMessage }}
+
+                </div>
+            {% endif %}
+
+            <form enctype="multipart/form-data" method="POST" action="/admin/imports/demographic-data-importer/">
+
+                {% csrf_token %}
+
+                <fieldset class="module aligned">
+
+                    <div class="form-row">
+                        <input type="file" name="file"/>
+                    </div>
+
+                    <div class="form-row" style='margin-top: 20px'>
+                        <input class='btn btn-high btn-info' type='submit' value='Import File'>
+                    </div>
+
+                </fieldset>
+
+            </form>
+
+        </div>
+
+    </div>
+
+{% endblock %}

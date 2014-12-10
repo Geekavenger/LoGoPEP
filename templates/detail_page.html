@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+
+{% block title %}{{ page.title }}{% endblock %}
+
+
+{% block extraHead %}
+
+    <link type="text/css" rel="stylesheet" href="/static/css/detail.css"/>
+    <link rel="stylesheet" href="/static/fancybox/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen"/>
+    <script type="text/javascript" src="/static/fancybox/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $(".fancybox").fancybox();
+        });
+
+        $(document).ready(function () {
+            $(".accordion").accordion({collapsible: true, heightStyle: "content", active: false});
+        });
+
+    </script>
+
+{% endblock %}
+
+
+{% block content %}
+
+    <div id='content'>
+
+        {% autoescape off %}
+            {{ page.content }}
+        {% endautoescape %}
+
+    </div>
+
+{% endblock %}

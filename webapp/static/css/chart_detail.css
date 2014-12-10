@@ -1,0 +1,81 @@
+/******************** CONTENT OVERRIDE ********************/
+#contentWrapper {
+    float: left;
+    width: 100%;
+    min-height: 750px;
+    background: url('/static/images/detail_page_background.png') repeat-x;
+}
+
+#contentWrapper #content {
+    width: 870px;
+    margin: 2px auto 0 auto;
+    padding: 70px 20px 20px 20px;
+    background-color: #FFFFFF;
+}
+
+
+/******************** UNIVERSAL TAGS ********************/
+h1 {
+    color: #20657b;
+    font-size: 36px;
+    text-transform: uppercase;
+}
+
+h2 {
+    color: #20657b;
+    font-family: Rockwell,Georgia, serif;
+    font-weight: normal;
+}
+
+
+/******************** PAGE CONTENT ********************/
+#pageTitle {
+    float: left;
+    margin-bottom: 40px;
+}
+
+
+/*************** SECTION ***************/
+.sectionWrapper {
+    float: left;
+    clear: both;
+    width: 100%;
+    margin-bottom: 40px;
+    border-bottom: 1px solid #89857f;
+}
+
+.noBorder {
+    border-bottom: 0;
+}
+
+.sectionWrapper .sectionTitle {
+    float: left;
+    width: 1050px;
+    margin-bottom: 20px;
+}
+
+.sectionWrapper .leftCol {
+    float: left;
+    width: 430px;
+}
+
+.sectionWrapper .rightCol {
+    float: right;
+    width: 430px;
+}
+
+.sectionWrapper p {
+    font-size: 13px;
+    margin-bottom: 10px;
+    line-height: 1.4em;
+}
+
+.sectionWrapper ul {
+    font-size: 13px;
+    margin: 0 0 10px 15px;
+}
+
+.sectionWrapper ul li {
+    line-height: 1.4em;
+    margin-bottom: 5px;
+}

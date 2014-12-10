@@ -1,0 +1,114 @@
+{% extends 'charts/chart_base.html' %}
+
+
+{% block extraHead %}
+
+    {{ block.super }}
+
+    <script type='text/javascript' src='/static/js/cost_chart/cost_chart.js'></script>
+
+    <script type="text/javascript">
+
+        $(document).ready(function() {
+
+            var allCities = $('#allCities');
+            var centralBox = $('.centralBox');
+            var centralCities = $('#centralCities');
+
+            $('#totalCosts').attr('checked', true);
+            allCities.attr('checked', true);
+            $('#2008').attr('checked', true);
+            $('#noNormalize').attr('checked', true);
+
+            var chartTitle = 'Total Costs';
+            $('#chartTitle').html(chartTitle);
+
+            setTimeout("findAllSelectedBoxes('cost')", 50);
+
+            $('.city').click(function(){
+
+                if (this.checked == false) {
+
+                    allCities.attr('checked', false);
+
+                }
+
+            });
+
+            $(centralBox).click(function(){
+
+                if (this.checked == false) {
+
+                    centralCities.attr('checked', false);
+
+                }
+
+            });
+
+            $('.innerBox').click(function(){
+
+                if (this.checked == false) {
+
+                    $('#innerSuburbs').attr('checked', false);
+
+                }
+
+            });
+
+            $('.outerBox').click(function(){
+
+                if (this.checked == false) {
+
+                    $('#outerSuburbs').attr('checked', false);
+
+                }
+
+            });
+
+        });
+
+        google.load("visualization", "1", {packages:["corechart"]});
+
+    </script>
+
+{% endblock %}
+
+
+{% block chartIndicators %}
+
+    <form>
+
+        <input type='hidden' name='chartType' value='costs'>
+
+        <ul id='chartIndicators'>
+
+            <li>
+                <input id='totalCosts' type='radio' name='indicator' value='ind_Total Costs' onclick="setChartTitle(this)">
+                <label for='totalCosts'>TOTAL COSTS</label>
+            </li>
+
+            <li>
+                <input id='energy_associated_costs' type='radio' name='indicator' value='ind_Energy-Associated Costs' onclick="setChartTitle(this)">
+                <label for='energy_associated_costs'>ENERGY-ASSOCIATED COSTS</label>
+            </li>
+
+            <li>
+                <input id='water_associated_costs' type='radio' name='indicator' value='ind_Water-Associated Costs' onclick="setChartTitle(this)">
+                <label for='water_associated_costs'>WATER-ASSOCIATED COSTS</label>
+            </li>
+
+            <li>
+                <input id='travel_associated_costs' type='radio' name='indicator' value='ind_Travel-Associated Costs' onclick="setChartTitle(this)">
+                <label for='travel_associated_costs'>TRAVEL-ASSOCIATED COSTS</label>
+            </li>
+
+            <li>
+                <input id='waste_associated_costs' type='radio' name='indicator' value='ind_Waste-Associated Costs' onclick="setChartTitle(this)">
+                <label for='waste_associated_costs'>WASTE-ASSOCIATED COSTS</label>
+            </li>
+
+        </ul>
+
+    </form>
+
+{% endblock %}

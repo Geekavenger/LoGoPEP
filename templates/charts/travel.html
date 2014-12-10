@@ -1,0 +1,119 @@
+{% extends 'charts/chart_base.html' %}
+
+
+{% block extraHead %}
+
+    {{ block.super }}
+
+    <script type='text/javascript' src='/static/js/water_chart/water_chart.js'></script>
+
+    <script type="text/javascript">
+
+        $(document).ready(function() {
+
+            var allCities = $('#allCities');
+            var centralBox = $('.centralBox');
+            var centralCities = $('#centralCities');
+
+            $('#vmt').attr('checked', true);
+            $('#totalVMT').attr('checked', true);
+            allCities.attr('checked', true);
+            $('#2008').attr('checked', true);
+            $('#noNormalize').attr('checked', true);
+
+            var chartTitle = 'Total VMT';
+            $('#chartTitle').html(chartTitle);
+
+            setTimeout("findAllSelectedBoxes('travel')", 50);
+
+            $('.city').click(function(){
+
+                if (this.checked == false) {
+
+                    allCities.attr('checked', false);
+
+                }
+
+            });
+
+            $(centralBox).click(function(){
+
+                if (this.checked == false) {
+
+                    centralCities.attr('checked', false);
+
+                }
+
+            });
+
+            $('.innerBox').click(function(){
+
+                if (this.checked == false) {
+
+                    $('#innerSuburbs').attr('checked', false);
+
+                }
+
+            });
+
+            $('.outerBox').click(function(){
+
+                if (this.checked == false) {
+
+                    $('#outerSuburbs').attr('checked', false);
+
+                }
+
+            });
+
+        });
+
+        google.load("visualization", "1", {packages:["corechart"]});
+
+    </script>
+
+{% endblock %}
+
+
+{% block chart-units %}
+
+    <ul id='chart-units'>
+
+        <li>
+            <input id='vmt' type='radio' name='unit' value='unit_vmt' onclick='showWeatherNorm()'>
+            <label for='vmt'>VMT</label>
+        </li>
+
+        <li>
+            <input id='co' type='radio' name='unit' value='unit_co' onclick='showWeatherNorm()'>
+            <label for='co'>CO<sub>2</sub>e</label>
+        </li>
+
+        <li>
+            <input id='dollars' type='radio' name='unit' value='unit_dollars' onclick='hideWeatherNorm()'>
+            <label for='dollars'>$</label>
+        </li>
+
+    </ul>
+
+{% endblock %}
+
+
+{% block chartIndicators %}
+
+    <form>
+
+        <input type='hidden' name='chartType' value='travel'>
+
+        <ul id='chartIndicators'>
+
+            <li>
+                <input id='totalVMT' type='radio' name='indicator' value='ind_Total VMT' onclick="setChartTitle(this)">
+                <label for='totalVMT'>TOTAL VEHICLE MILES TRAVELED (VMT)</label>
+            </li>
+
+        </ul>
+
+    </form>
+
+{% endblock %}

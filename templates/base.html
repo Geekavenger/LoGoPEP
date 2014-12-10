@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+
+<html>
+
+
+<head>
+
+    <title>{% block title %}LHB{% endblock %} | RII</title>
+    <link type="text/css" rel="stylesheet" href="/static/css/base.css" />
+    <link type="text/css" rel="stylesheet" href="/static/css/nav.css" />
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,700' rel='stylesheet' type='text/css'>
+
+    {% block extraHead %}
+
+
+
+    {% endblock %}
+
+</head>
+
+
+<body id='{% block bodyid %}{% endblock %}'>
+
+    <div id='headerWrapper'>
+
+        <div id='header'>
+
+            <div id='logo'>
+
+                <a href='/'>
+                    <img src='/static/images/logo.png'>
+                </a>
+
+            </div>
+
+            {% include 'header_nav.html' %}
+
+        </div>
+
+    </div>
+
+    <div id='contentWrapper'>
+
+        {% block content %}
+
+
+
+        {% endblock %}
+
+    </div>
+
+    <div id='footerWrapper'>
+
+        <div id='footer'>
+
+            <div class='footerCopyWrapper'>
+
+                <h3>
+                    Want more information?
+                    <br>
+                    Interested in joining?
+                </h3>
+
+                <p>
+                    Contact Rick Carter at LHB for information
+                    about the Regional Indicators Initiative.
+                    <br>
+                    <a href='mailto:regionalindicatorsMN@lhbcorp.com' style='color: #C8DE41'>regionalindicatorsMN@lhbcorp.com</a>
+                    <br>
+                    <span style='color: #C8DE41'>612-752-6923</span>
+                </p>
+
+                <p style='font-size: 11px; text-transform: uppercase'>
+                    Copyright &copy;2013 • All Rights Reserved
+                </p>
+
+            </div>
+
+            <div class='footerCopyWrapper right'>
+
+                <div class='lhb_orange'>
+
+                    <a href='http://www.lhbcorp.com/' target='_blank'>
+                        <img style='margin-bottom: 15px' src='/static/images/footer_logos/lhb_block.png'>
+                    </a>
+
+                    <img src='/static/images/footer_logos/orange.png'>
+
+                </div>
+
+                <div class='bigC'>
+
+                    <a href='http://mn.gov/commerce/' target='_blank'>
+                        <img src='/static/images/footer_logos/big_c.png'>
+                    </a>
+
+                </div>
+
+                <div class='urban_agency'>
+
+                    <a href='http://minnesota.uli.org/' target='_blank'>
+                        <img style='margin-bottom: 10px' src='/static/images/footer_logos/urban_land.png'>
+                    </a>
+
+                    <a href='http://www.pca.state.mn.us/' target='_blank'>
+                        <img src='/static/images/footer_logos/pollution_agency.png'>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+
+</html>

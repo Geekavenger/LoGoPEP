@@ -1,0 +1,25 @@
+<ul id='headerNav'>
+
+    {% for link in headerLinks %}
+        <li class='navLink {% if link.links %}arrow{% endif %}'>
+
+            <a class='navLinkA' href='{% if link.direct_url %}{{ link.direct_url }}{% else %}{{ link.url }}{% endif %}'>
+                {{ link.title }}
+            </a>
+
+            {% if link.links %}
+                <ul class='subNav subNav{{ link.display_order }}'>
+
+                    {% for subLink in link.links %}
+                        <li class='subNavLink'>
+                            <a class='subNavLinkA' href='{% if subLink.direct_url %}{{ subLink.direct_url }}{% else %}{{ subLink.url }}{% endif %}'>{{subLink.title}}</a>
+                        </li>
+                    {% endfor %}
+
+                </ul>
+            {% endif %}
+
+        </li>
+    {% endfor %}
+
+</ul>

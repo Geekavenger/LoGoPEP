@@ -1,0 +1,118 @@
+/******************** CONTENT OVERRIDE ********************/
+#contentWrapper {
+    float: left;
+    width: 100%;
+    min-height: 750px;
+    background: url('/static/images/detail_page_background.png') repeat-x;
+}
+
+#contentWrapper #content {
+    width: 870px;
+    margin: 2px auto 0 auto;
+    padding: 70px 20px 20px 20px;
+    background-color: #FFFFFF;
+}
+
+#contentWrapper #content a{
+    color:#e97c46;
+}
+
+/******************** UNIVERSAL TAGS ********************/
+#contentWrapper #content h1 {
+    color: #20657b;
+    font-size: 36px;
+    text-transform: uppercase;
+    margin:0 0 50px 0;
+}
+
+#contentWrapper #content h2 {
+    color: #20657b;
+    font-size: 24px;
+    /*font-family: Rockwell, Georgia, serif;*/
+    font-weight: bold;
+    margin:0 0 25px 0;
+}
+
+#contentWrapper #content p {
+    font-size: 16px;
+    text-align: justify;
+    margin-bottom: 10px;
+    line-height: 1.45em;
+}
+
+#contentWrapper #content ul {
+    font-size: 13px;
+    margin: 0 0 10px 15px;
+}
+
+#contentWrapper #content ul li {
+    line-height: 1.45em;
+    margin-bottom: 5px;
+}
+
+#contentWrapper #content hr{
+    border: 0;
+    height: 1px;
+    background: #868686;
+    float:left;
+    width: 870px;
+    clear: both;
+    margin: 50px 0 50px 0;
+}
+
+#contentWrapper #content .left_col{
+    float:left;
+    width:405px;
+}
+
+#contentWrapper #content .right_col{
+    float:right;
+    width:405px;
+}
+
+#contentWrapper #content td{
+    vertical-align: top;
+    text-align: justify;
+    line-height: 1.45em;
+    padding-bottom: 1.0em;
+}
+
+#contentWrapper #content td.spacer_cell{
+    padding-right: 12px;
+}
+
+.ui-accordion-header{
+    font-size: 28px;
+    font-weight: bold;
+    border-bottom: 1px solid #a9a9a9;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    cursor: hand; cursor: pointer;
+    outline: none;
+}
+
+.ui-icon {
+    width: 16px;
+    height: 16px;
+    display: block;
+}
+
+.ui-accordion-header-icon{
+    float:left;
+    margin:18px 18px 0 0;
+}
+
+.ui-icon-triangle-1-s {
+    background: url('/static/images/sect_open.png') no-repeat;
+}
+
+.ui-icon-triangle-1-e{
+    background: url('/static/images/sect_closed.png') no-repeat;
+}
+
+.ui-accordion .ui-accordion-content {
+    padding: 1em 0;
+    border-top: 0;
+    overflow: auto;
+}
+

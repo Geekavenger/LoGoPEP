@@ -1,0 +1,251 @@
+<div id='chartTriggers'>
+
+    <div class='cityTriggers'>
+
+        <div class='triggerTitle'>
+            CITIES <br> (SELECT ANY # OF CITIES)
+        </div>
+
+        <div class='lineBreak'></div>
+
+        <div class='triggerList'>
+
+            <ul class='allTrigger'>
+
+                <li class='listTitle'>
+
+                    <input id='allCities' type='checkbox' value='city_all' onclick="checkAllCities(this)">
+                    <label for='allCities'>ALL CITIES</label>
+
+                </li>
+
+            </ul>
+
+            <ul class='cityList'>
+
+                <li class='listTitle'>
+                    <input id='centralCities' type='checkbox' value='All Central Cities' onclick="checkCentralCities(this)">
+                    <label for='centralCities'>CENTRAL / STAND-ALONE</label>
+                </li>
+
+                {% for city in centralCities %}
+                    <li>
+                        <input id='{{ city.id }}' class='city centralBox' type='checkbox' value='city_{{ city.id }}' onclick="lookForAllCities(this)">
+                        <label for='{{ city.id }}'>{{ city.city }}</label>
+                    </li>
+                {% endfor %}
+
+            </ul>
+
+            <ul class='cityList'>
+
+                <li class='listTitle'>
+                    <input id='innerSuburbs' type='checkbox' value='All Inner Suburbs' onclick="checkInnerCities(this)">
+                    <label for='innerSuburbs'>INNER-RING SUBURBS</label>
+                </li>
+
+                {% for city in innerCities %}
+                    <li>
+                        <input id='{{ city.id }}' class='city innerBox' type='checkbox' value='city_{{ city.id }}' onclick="lookForAllCities(this)">
+                        <label for='{{ city.id }}'>{{ city.city }}</label>
+                    </li>
+                {% endfor %}
+
+            </ul>
+
+            <ul class='cityList' style='margin-right: 0'>
+
+                <li class='listTitle'>
+                    <input id='outerSuburbs' type='checkbox' value='All Outer Suburbs' onclick="checkOuterCities(this)">
+                    <label for='outerSuburbs'>OUTER-RING SUBURBS</label>
+                </li>
+
+                {% for city in outerCities %}
+                    <li>
+                        <input id='{{ city.id }}' class='city outerBox' type='checkbox' value='city_{{ city.id }}' onclick="lookForAllCities(this)">
+                        <label for='{{ city.id }}'>{{ city.city }}</label>
+                    </li>
+                {% endfor %}
+
+            </ul>
+
+        </div>
+
+    </div>
+
+    <div class='timeTriggers'>
+
+        <div class='triggerTitle'>
+            TIMELINE <br> (SELECT ONE)
+        </div>
+
+        <div class='lineBreak'></div>
+
+        <div class='triggerList'>
+
+            <ul class='allTrigger'>
+
+                <li class='listTitle'>
+
+                    <input id='allYears' class='year' type='checkbox' value='time_all' onclick="unCheckAllYears(this)">
+                    <label for='allYears'>ALL YEARS</label>
+
+                </li>
+
+            </ul>
+
+            <ul>
+
+                {% for year in yearRange %}
+
+                    <li>
+                        <input id='{{ year }}' class='year' type='checkbox' value='time_{{ year }}' onclick="unCheckAllYears(this)">
+                        <label for='{{ year }}'>{{ year }}</label>
+                    </li>
+
+                {% endfor %}
+
+            </ul>
+
+        </div>
+
+    </div>
+
+    <div class='normalizeTriggers'>
+
+        <div class='triggerTitle'>
+            NORMALIZE <br> (SELECT ONE)
+        </div>
+
+        <div class='lineBreak'></div>
+
+        <div class='triggerList'>
+
+            <ul class='allTrigger'>
+
+                <li class='listTitle'>
+
+                    <input id='noNormalize' class='normalize' type='checkbox' value='norm_none' onclick="unCheckNormalizes(this)">
+                    <label for='noNormalize'>None</label>
+
+                </li>
+
+            </ul>
+
+            <ul>
+
+                <li style='margin-bottom: 10px'>
+                    <input id='population' class='normalize' type='checkbox' value='norm_population' onclick="unCheckNormalizes(this)">
+                    {% if perYear %}
+                        <label for='population'>Population - <br> &nbsp;&nbsp;&nbsp;&nbsp; Per capita/year</label>
+                    {% else %}
+                        <label for='population'>Population - <br> &nbsp;&nbsp;&nbsp;&nbsp; Per capita/day</label>
+                    {% endif %}
+                </li>
+
+                <li style='margin-bottom: 10px'>
+                    <input id='household' class='normalize' type='checkbox' value='norm_household' onclick="unCheckNormalizes(this)">
+                    {% if perYear %}
+                        <label for='household'>Household - <br> &nbsp;&nbsp;&nbsp;&nbsp; Per household/year</label>
+                    {% else %}
+                        <label for='household'>Household - <br> &nbsp;&nbsp;&nbsp;&nbsp; Per household/day</label>
+                    {% endif %}
+                </li>
+
+                <li style='margin-bottom: 10px;width:100%;'>
+                    <input id='employment' class='normalize' type='checkbox' value='norm_employment' onclick="unCheckNormalizes(this)">
+                    {% if perYear %}
+                        <label for='employment'>Employment - <br> &nbsp;&nbsp;&nbsp;&nbsp; Per job/year</label>
+                    {% else %}
+                        <label for='employment'>Employment - <br> &nbsp;&nbsp;&nbsp;&nbsp; Per job/day</label>
+                    {% endif %}
+                </li>
+
+                {% if weather %}
+
+                    <li class='weather' style='width: 100%; height: 1px; margin: 10px 0; background-color: #C0C0C0'></li>
+
+                    <li class='weather' style='margin-bottom: 10px'>
+                        <input id='weather' class='weather_normalize' type='checkbox' value='weather_norm'>
+                        <label for='weather'>Weather - <br> &nbsp;&nbsp;&nbsp;&nbsp; Normalized by <br> &nbsp;&nbsp;&nbsp;&nbsp; HDD/CDD</label>
+                    </li>
+
+                {% endif %}
+
+            </ul>
+
+        </div>
+
+    </div>
+
+    <div class='averageTriggers'>
+
+        <div class='triggerTitle'>
+            ADD TRENDLINES <br> (OPTIONAL)
+        </div>
+
+        <div class='lineBreak'></div>
+
+        <div class='triggerList'>
+
+            <ul class='allTrigger'>
+
+                <li class='listTitle'>
+
+                    <input id='allCitiesAverage' class='average' type='checkbox' value='average_A' onclick="unCheckAverages(this)">
+                    <label for='allCitiesAverage'>RII Cities average</label>
+
+                </li>
+
+            </ul>
+
+            <ul style='margin-bottom: 20px'>
+
+                <li>
+                    <input id='centralAverage' class='average' type='checkbox' value='average_C' onclick="unCheckAverages(this)">
+                    <label for='centralAverage'>Central/Stand Alone Cities</label>
+                </li>
+
+                <li>
+                    <input id='innerAverage' class='average' type='checkbox' value='average_I' onclick="unCheckAverages(this)">
+                    <label for='innerAverage'>Inner-Ring Suburbs</label>
+                </li>
+
+                <li>
+                    <input id='outerAverage' class='average' type='checkbox' value='average_O' onclick="unCheckAverages(this)">
+                    <label for='outerAverage'>Outer-Ring Suburbs</label>
+                </li>
+
+            </ul>
+
+            <ul>
+
+                <li>
+                    <input id='stateAverage' class='average' type='checkbox' value='average_State' onclick="unCheckAverages(this)">
+                    <label for='stateAverage'>MN State Average</label>
+                </li>
+
+                <li>
+                    <input id='usAverage' class='average' type='checkbox' value='average_US' onclick="unCheckAverages(this)">
+                    <label for='usAverage'>US Average</label>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div style='clear: both'></div>
+
+<script>
+
+    $('input').click(function() {
+
+        findAllSelectedBoxes('{{ chartType }}')
+
+    });
+
+</script>

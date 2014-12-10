@@ -1,0 +1,231 @@
+/********************
+    CONTENT OVERRIDE
+********************/
+#contentWrapper #content {
+    width: 920px;
+    padding-bottom: 100px;
+}
+
+
+/********************
+    PAGE SECTIONS
+********************/
+#contentWrapper .sectionWrapper {
+    float: left;
+    clear: both;
+    width: 920px;
+    margin-bottom: 10px;
+    border: none;
+}
+
+#contentWrapper .sectionWrapper .leftCol {
+    width: 455px;
+}
+
+#contentWrapper .sectionWrapper .leftCol h1 {
+    display: block;
+    float: left;
+    height: 36px;
+    line-height: 1em;
+    margin-right: 20px;
+    padding-right: 20px;
+    border-right: 3px solid #454545;
+}
+
+#contentWrapper .sectionWrapper .leftCol .units-wrapper {
+    float: left;
+    height: 36px;
+}
+
+#contentWrapper .sectionWrapper .leftCol .units-wrapper ul {
+    float: left;
+    list-style: none;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+#contentWrapper .sectionWrapper .leftCol .units-wrapper ul li {
+    float: left;
+    margin: 0 20px 0 0;
+    line-height: 36px;
+}
+
+#contentWrapper .sectionWrapper .leftCol .units-wrapper ul li input[type='radio'] {
+    margin-right: 5px;
+}
+
+#contentWrapper .sectionWrapper .leftCol .units-wrapper ul li label {
+    font-size: 20px;
+    font-weight: lighter;
+    line-height: 36px;
+}
+
+#contentWrapper .sectionWrapper .rightCol {
+    width: 455px;
+}
+
+#contentWrapper .sectionWrapper h2 {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+#contentWrapper .sectionWrapper p {
+    font-size: 16px;
+    text-align: justify;
+}
+
+
+/********************
+    CHART DIV
+********************/
+#chartIndicators {
+    float: left;
+    list-style: none;
+    margin-top: 45px;
+}
+
+#chartIndicators li {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+#chartIndicators li input[type='checkbox'] {
+    margin-right: 5px;
+}
+
+
+/********************
+    CHART DIV
+********************/
+#contentWrapper #chartWrapper {
+    float: left;
+    clear: both;
+    width: 920px;
+}
+
+
+/********************
+    CHART TITLE
+********************/
+#contentWrapper #chartTitle {
+    float: left;
+    clear: both;
+    width: 920px;
+    /*font-family: Rockwell, 'san-serif';*/
+    font-size: 36px;
+    font-weight: bold;
+    margin: 15px 0 5px 0;
+}
+
+#contentWrapper #chartSubTitle {
+    float: left;
+    clear: both;
+    width: 920px;
+    text-transform: uppercase;
+    /*font-family: Rockwell, 'san-serif';*/
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 45px;
+}
+
+
+/********************
+    CHART TRIGGERS
+********************/
+#chartTriggers {
+    float: left;
+    width: 920px;
+    height: auto;
+    margin-bottom: 40px;
+}
+
+#chartTriggers .lineBreak {
+    float: left;
+    clear: both;
+    width: 100%;
+    height: 1px;
+    margin: 10px 0 20px 0;
+    background-color: #404040;
+}
+
+#chartTriggers .cityTriggers {
+    float: left;
+    width: 500px;
+    height: auto;
+}
+
+#chartTriggers .timeTriggers {
+    float: left;
+    width: 115px;
+    height: auto;
+}
+
+#chartTriggers .normalizeTriggers {
+    float: left;
+    width: 145px;
+    height: auto;
+}
+
+#chartTriggers .averageTriggers {
+    float: left;
+    width: 160px;
+    height: auto;
+}
+
+#chartTriggers .triggerTitle {
+    font-size: 14px;
+    text-transform: uppercase;
+    padding-left: 5px;
+}
+
+#chartTriggers .triggerTitle input[type="checkbox"] {
+    border: none;
+    border-radius: 0;
+}
+
+#chartTriggers .triggerList {
+    float: left;
+    padding-left: 5px;
+}
+
+#chartTriggers .triggerList ul {
+    list-style: none;
+    float: left;
+}
+
+#chartTriggers .triggerList ul.allTrigger {
+    float: left;
+    clear: both;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+#chartTriggers .triggerList .cityList {
+    float: left;
+    margin-right: 25px;
+}
+
+#chartTriggers .triggerList ul li {
+    float: left;
+    clear: both;
+    color: #a09c95;
+    margin-bottom: 2px;
+    font-weight: normal;
+    font-size: 13px;
+}
+
+#chartTriggers .triggerList ul .listTitle {
+    color: #75726d;
+}
+
+#chartTriggers .triggerList input, label {
+    cursor: pointer;
+}
+
+
+/********************
+    FOOTER OVERRIDE
+********************/
+#footerWrapper {
+    margin-top: -180px;
+}

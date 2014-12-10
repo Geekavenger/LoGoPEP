@@ -1,0 +1,78 @@
+/******************** TOP LEVEL ********************/
+#header #headerNav {
+    position: relative;
+    float: right;
+    list-style: none;
+    margin-top: 100px;
+    margin-right: 20px;
+}
+
+#header #headerNav .navLink {
+    position: relative;
+    float: left;
+    height: 25px;
+    margin-left: 25px;
+    font-size: 13px;
+    text-transform: uppercase;
+}
+
+#header #headerNav .arrow:hover {
+    background: url('/static/images/subnav_arrow.png') bottom center no-repeat;
+}
+
+#header #headerNav .navLinkA {
+    color: #89857f;
+    font-weight: bold;
+}
+
+#header #headerNav .navLinkA:hover {
+    color: #e97c46;
+}
+
+
+/******************** SUB LEVEL ********************/
+#headerNav .subNav {
+    display: none;
+    position: absolute;
+    list-style: none;
+    top: 25px;
+    width: auto;
+    height: auto;
+    color: #FFFFFF;
+    padding: 25px 35px 15px 35px;
+    background: #252525;
+    border-radius: 3px;
+    z-index: 1000;
+}
+
+#headerNav .navLink:hover .subNav {
+    display: block;
+}
+
+#headerNav .subNav1 {
+    left: -32px;
+}
+
+#headerNav .subNav2 {
+    left: 4px;
+}
+
+#headerNav .subNav3 {
+    right: -20px;
+    width: 185px;
+}
+
+#headerNav .subNav .subNavLink {
+    float: left;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+#headerNav .subNav .subNavLinkA {
+    color: #FFFFFF;
+    font-weight: lighter;
+}
+
+#headerNav .subNav .subNavLinkA:hover {
+    color: #e97c46;
+}
