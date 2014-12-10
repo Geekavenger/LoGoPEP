@@ -25,9 +25,15 @@ def viewEnergyChart(request, page):
         else:
             pass
 
+    if year != '':
+        start_year = year
+
+    else:
+        start_year = None
+
     context = {'page': page, 'chartType': chartType, 'chartColor': chartColor, 'chartData': chartData,
                'centralCities': centralCities, 'innerCities': innerCities, 'outerCities': outerCities,
-               'yearRange': yearRange, 'weather': weather}
+               'yearRange': yearRange, 'weather': weather, 'start_year': start_year}
     setDetailContext(context)
 
     return render_to_response('charts/energy.html', context)
@@ -54,9 +60,15 @@ def viewWaterChart(request, page):
         else:
             pass
 
+    if year != '':
+        start_year = year
+
+    else:
+        start_year = None
+
     context = {'page': page, 'chartType': chartType, 'chartColor': chartColor, 'chartData': chartData,
                'centralCities': centralCities, 'innerCities': innerCities, 'outerCities': outerCities,
-               'yearRange': yearRange}
+               'yearRange': yearRange, 'start_year': start_year}
     setDetailContext(context)
 
     return render_to_response('charts/water.html', context)
@@ -83,9 +95,15 @@ def viewTravelChart(request, page):
         else:
             pass
 
+    if year != '':
+        start_year = year
+
+    else:
+        start_year = None
+
     context = {'page': page, 'chartType': chartType, 'chartColor': chartColor, 'chartData': chartData,
                'centralCities': centralCities, 'innerCities': innerCities, 'outerCities': outerCities,
-               'yearRange': yearRange}
+               'yearRange': yearRange, 'start_year': start_year}
     setDetailContext(context)
 
     return render_to_response('charts/travel.html', context)
@@ -112,9 +130,15 @@ def viewWasteChart(request, page):
         else:
             pass
 
+    if year != '':
+        start_year = year
+
+    else:
+        start_year = None
+
     context = {'page': page, 'chartType': chartType, 'chartColor': chartColor, 'chartData': chartData,
                'centralCities': centralCities, 'innerCities': innerCities, 'outerCities': outerCities,
-               'yearRange': yearRange}
+               'yearRange': yearRange, 'start_year': start_year}
     setDetailContext(context)
 
     return render_to_response('charts/waste.html', context)
@@ -143,10 +167,16 @@ def viewEmissionsChart(request, page):
         else:
             pass
 
+    if year != '':
+        start_year = year
+
+    else:
+        start_year = None
+
     context = {'page': page, 'chartType': chartType, 'chartColor': chartColor, 'perYear': perYear,
                'chartData': chartData,
                'centralCities': centralCities, 'innerCities': innerCities, 'outerCities': outerCities,
-               'yearRange': yearRange, 'weather': weather}
+               'yearRange': yearRange, 'weather': weather, 'start_year': start_year}
     setDetailContext(context)
 
     return render_to_response('charts/emissions.html', context)
@@ -174,10 +204,16 @@ def viewCostChart(request, page):
         else:
             pass
 
+    if year != '':
+        start_year = year
+
+    else:
+        start_year = None
+
     context = {'page': page, 'chartType': chartType, 'chartColor': chartColor, 'perYear': perYear,
                'chartData': chartData,
                'centralCities': centralCities, 'innerCities': innerCities, 'outerCities': outerCities,
-               'yearRange': yearRange}
+               'yearRange': yearRange, 'start_year': start_year}
     setDetailContext(context)
 
     return render_to_response('charts/cost.html', context)

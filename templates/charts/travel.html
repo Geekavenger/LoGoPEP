@@ -18,7 +18,12 @@
             $('#vmt').attr('checked', true);
             $('#totalVMT').attr('checked', true);
             allCities.attr('checked', true);
-            $('#2008').attr('checked', true);
+
+            {% if start_year %}
+                var startYear = '#' + {{ start_year }};
+                $(startYear).attr('checked', true);
+            {% endif %}
+
             $('#noNormalize').attr('checked', true);
 
             var chartTitle = 'Total VMT';
