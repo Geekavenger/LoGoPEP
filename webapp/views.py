@@ -28,12 +28,12 @@ def selectHomePageSect(request):
     if request.POST:
         sect_id = request.POST['sect']
         section = HomePage_Section.objects.get(sect_type=sect_id)
-        json_data['billboardUrl'] = section.billboard_image.url
-        json_data['graphUrl'] = section.graph_image.url
-        json_data['textHtml'] = section.graph_copy
+        json_data['billboardUrl'] = str(section.billboard_image)
+        json_data['graphUrl'] = str(section.graph_image)
+        json_data['textHtml'] = str(section.graph_copy)
         json_data['sect'] = sect_id
 
-        return HttpResponse(json.dumps(json_data), mimetype='application/json')
+    return HttpResponse(json.dumps(json_data), content_type='application/json')
 
 
 def viewParticipationForm(request):
