@@ -148,22 +148,22 @@ def energyImporter(request):
                 city = fields[0]
                 year = fields[1]
 
-                # #### WN = WEATHER NORMALIZED #####
-                # #### TYPES #####
+                # WN = WEATHER NORMALIZED
+                # TYPES
                 electricity = fields[2].replace(",", "")
                 natural_gas = fields[3].replace(",", "")
                 other = fields[4].replace(",", "")
 
-                # #### WN TYPE #####
+                # WN TYPE
                 wn_electricity = fields[5].replace(",", "")
                 wn_natural_gas = fields[6].replace(",", "")
                 wn_other = fields[7].replace(",", "")
 
-                # # TOTALS BY USE ##
+                # TOTALS BY USE
                 total_res_energy = fields[8].replace(",", "")
                 total_com_ind_energy = fields[9].replace(",", "")
 
-                ## WN TOTALS BY USE ##
+                # WN TOTALS BY USE
                 wn_total_res_energy = fields[10].replace(",", "")
                 wn_total_com_ind_energy = fields[11].replace(",", "")
 
@@ -172,7 +172,7 @@ def energyImporter(request):
 
                 try:
 
-                    ## Find City ##
+                    # Find City
                     cityObject = City.objects.get(city=city)
 
                     newItem = Energy()

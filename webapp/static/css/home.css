@@ -6,10 +6,9 @@ h1 {
 }
 
 h2 {
-    color: #20657b;
+    color: #20657B;
     font-size: 15px;
 }
-
 
 /******************** BILLBOARD ********************/
 #billboardWrapper {
@@ -21,7 +20,6 @@ h2 {
 #billboardWrapper img {
     margin: 0 auto;
 }
-
 
 /******************** IN PAGE LINKS ********************/
 #inPageLinksWrapper {
@@ -58,7 +56,6 @@ h2 {
     padding: 0 10px;
 }
 
-
 /********** BUBBLES **********/
 #inPageLinks .bubbleWrapper {
     float: left;
@@ -66,6 +63,10 @@ h2 {
     min-height: 195px;
     text-align: center;
     margin-right: 5px;
+}
+
+#inPageLinks .bubbleWrapper .bubbleImage {
+    cursor: pointer;
 }
 
 #inPageLinks .lastBubbleWrapper {
@@ -78,7 +79,6 @@ h2 {
     height: 195px;
     margin-bottom: 5px;
 }
-
 
 /******************** GRAPH SECTION ********************/
 #graphSectionWrapper {
@@ -108,51 +108,47 @@ h2 {
     line-height: 1.4em;
 }
 
-
-.subHeading{
+.subHeading {
     color: #323232;
     font-size: 22px;
     font-weight: normal;
-    margin:0 0 15px 0;
+    margin: 0 0 15px 0;
 }
 
-.bubbleImage{
-    width:185px;
+.bubbleImage {
+    width: 185px;
     height: 204px;
-    cursor: hand;
 }
 
 #energybubble, #energybubble.active, #energybubble.active:hover, #energybubble.inActive:hover {
     background: url('/static/images/nav_bubbles/energy.png') no-repeat;
 }
 
-#energybubble:hover, #energybubble.inActive{
+#energybubble:hover, #energybubble.inActive {
     background: url('/static/images/nav_bubbles/energy_selected.png') no-repeat;
 }
 
-
-#waterbubble, #waterbubble.active, #waterbubble.active:hover, #waterbubble.inActive:hover{
+#waterbubble, #waterbubble.active, #waterbubble.active:hover, #waterbubble.inActive:hover {
     background: url('/static/images/nav_bubbles/water.png') no-repeat;
 }
 
-#waterbubble:hover, #waterbubble.inActive{
+#waterbubble:hover, #waterbubble.inActive {
     background: url('/static/images/nav_bubbles/water_selected.png') no-repeat;
 }
 
-
-#travelbubble, #travelbubble.active, #travelbubble.active:hover, #travelbubble.inActive:hover{
+#travelbubble, #travelbubble.active, #travelbubble.active:hover, #travelbubble.inActive:hover {
     background: url('/static/images/nav_bubbles/travel.png') no-repeat;
 }
 
-#travelbubble:hover, #travelbubble.inActive{
+#travelbubble:hover, #travelbubble.inActive {
     background: url('/static/images/nav_bubbles/travel_selected.png') no-repeat;
 }
 
-#wastebubble, #wastebubble.active, #wastebubble.active:hover, #wastebubble.inActive:hover{
+#wastebubble, #wastebubble.active, #wastebubble.active:hover, #wastebubble.inActive:hover {
     background: url('/static/images/nav_bubbles/waste.png') no-repeat;
 }
 
-#wastebubble:hover, #wastebubble.inActive{
+#wastebubble:hover, #wastebubble.inActive {
     background: url('/static/images/nav_bubbles/waste_selected.png') no-repeat;
 }
 
@@ -160,7 +156,7 @@ h2 {
     background: url('/static/images/nav_bubbles/carbon.png') no-repeat;
 }
 
-#carbonbubble:hover, #carbonbubble.inActive{
+#carbonbubble:hover, #carbonbubble.inActive {
     background: url('/static/images/nav_bubbles/carbon_selected.png') no-repeat;
 }
 
