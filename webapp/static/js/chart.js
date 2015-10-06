@@ -164,7 +164,6 @@ function updateChart(aList, chartType) {
     var params = {
         type: 'GET',
         data: postData,
-        csrfmiddlewaretoken: '{{ csrf_token }}',
         url: "/chart_api/update-chart"
     };
 
