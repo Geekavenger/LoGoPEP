@@ -256,7 +256,7 @@ def update_chart(request):
 
         json_data['weatherTitle'] = ''
 
-    return HttpResponse(json.dumps(json_data), mimetype='application/json')
+    return HttpResponse(json.dumps(json_data), content_type='application/json')
 
 
 def get_chart_titles(indicator, unit, average_term, year, city_list):
