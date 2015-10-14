@@ -25,8 +25,8 @@ def viewHome(request):
 def selectHomePageSect(request):
     json_data = {}
 
-    if request.POST:
-        sect_id = request.POST['sect']
+    if request.GET['sect']:
+        sect_id = request.GET['sect']
         section = HomePage_Section.objects.get(sect_type=sect_id)
         json_data['billboardUrl'] = str(section.billboard_image)
         json_data['graphUrl'] = str(section.graph_image)
