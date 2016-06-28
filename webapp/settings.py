@@ -4,8 +4,8 @@ import os
 APP_ROOT = os.path.dirname(os.path.realpath(__file__))
 PROJECT_ROOT = os.path.normpath(os.path.join(APP_ROOT, '..'))
 
-DEVELOPMENT = True
-DEBUG = True
+DEVELOPMENT = False
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -23,7 +23,7 @@ DATABASES = {
 		'HOST': '',  # Set to empty string for localhost. Not used with sqlite3.
 		'PORT': '',  # Set to empty string for default. Not used with sqlite3.
 	},
-	'default': {
+	'development': {
 		'ENGINE': 'django.db.backends.sqlite3',  # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
 		'NAME': os.path.join(PROJECT_ROOT, "sqlite/local.db"),  # Or path to database file if using sqlite3.
 		'USER': '',  # Not used with sqlite3.
@@ -31,11 +31,11 @@ DATABASES = {
 		'HOST': '',  # Set to empty string for localhost. Not used with sqlite3.
 		'PORT': '',  # Set to empty string for default. Not used with sqlite3.
 	},
-	'production': {
+	'default': {
 		'ENGINE': 'django.db.backends.postgresql_psycopg2',  # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-		'NAME': '',  # Or path to database file if using sqlite3.
-		'USER': '',  # Not used with sqlite3.
-		'PASSWORD': '',  # Not used with sqlite3.
+		'NAME': 'lhbweb',  # Or path to database file if using sqlite3.
+		'USER': 'lhbweb',  # Not used with sqlite3.
+		'PASSWORD': 'Order1webfaction',  # Not used with sqlite3.
 		'HOST': '',  # Set to empty string for localhost. Not used with sqlite3.
 		'PORT': '',  # Set to empty string for default. Not used with sqlite3.
 	}
@@ -43,7 +43,7 @@ DATABASES = {
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.4/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -151,7 +151,6 @@ INSTALLED_APPS = (
 	'django.contrib.sitemaps',
 	'django.contrib.messages',
 	'django.contrib.staticfiles',
-	'south',
 	# 3rd Party Applications
 	'filebrowser',
 	'suit',
@@ -193,9 +192,8 @@ SUIT_CONFIG = {
 		'auth': 'icon-lock',
 	},
 	'MENU_OPEN_FIRST_CHILD': True,  # Default True
-	'MENU_EXCLUDE': ('auth.group',),
 	'MENU': (
-		{'app': 'auth', 'label': 'Administration', 'icon': 'icon-lock', 'models': ('user', 'group')},
+		{'app': 'auth'},
 		{'app': 'city_metrics', 'label': 'City Metrics', 'icon': 'icon-signal'},
 		{'app': 'site_content', 'label': 'Site Content', 'icon': 'icon-file'},
 		{'label': 'Site Media', 'icon': 'icon-folder-open', 'url': '/admin/filebrowser/browse/'},
